@@ -1,0 +1,47 @@
+add code
+private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {                                       
+        // TODO add your handling code here:
+        if(txtName.getText().equals("")||txtSubject.getText().equals("")||txtCode.getText().equals("")){
+            // if any of three field left blank than show message
+            JOptionPane.showMessageDialog(this, "Please Enter All Data !");
+        }else{
+            //if all data field than...
+            // store enter data into String array --data--
+            String data[] = {txtName.getText(),txtSubject.getText(),txtCode.getText()};
+            
+            DefaultTableModel tb1Model = (DefaultTableModel)jTable1.getModel();
+            // add string array data
+            tb1Model.addRow(data); // row added
+            //successfully added message
+            JOptionPane.showMessageDialog(this, "Add Data Successfully..! !");
+            //clear textfield for new entry...
+            txtName.setText("");
+            txtSubject.setText("");
+            txtCode.setText("");
+        }
+    }                                      
+
+
+
+
+delete Code
+ private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO add your handling code here:
+        //get jtable model first 
+        DefaultTableModel tb1Model = (DefaultTableModel) jTable1.getModel();
+        
+        //delete row
+        if(jTable1.getSelectedRowCount()==1){
+            //if single row is selected than delete
+            tb1Model.removeRow(jTable1.getSelectedRow());
+            
+        }else{
+            if(jTable1.getRowCount()==0){
+                // if table is empty (no data) than display message
+                JOptionPane.showMessageDialog(this, "Table is Empty.");
+        }else{
+                //if the is not empty but row is not selected or multiple row is selected 
+                JOptionPane.showMessageDialog(this, "Please select Single Row For Delete.");
+            }
+        }
+    }                                         
